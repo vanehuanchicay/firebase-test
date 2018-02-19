@@ -34,7 +34,7 @@ function signIn() {
     // The signed-in user info.
     var user = result.user;
     console.log(user.displayName);
-    $('.image').append('<p class="nameUser">Welcome ' + user.displayName + '!<p>');
+    $('.user_name').append('<h4>Welcome ' + user.displayName + '!</h4>');
  
 
   // ...
@@ -49,32 +49,6 @@ function signIn() {
   // ...
   });
 }
-
-function observador() {
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      console.log('existe usuario activo');
-      // User is signed in.
-      var displayName = user.displayName;
-      var email = user.email;
-      var emailVerified = user.emailVerified;
-      var photoURL = user.photoURL;
-      var isAnonymous = user.isAnonymous;
-      var uid = user.uid;
-      var providerData = user.providerData;
-      $('#google-sign').addClass('hidden');
-      $('#play').removeClass('hidden');
-      $('#play2').removeClass('hidden');
-    } else {
-    // User is signed out.
-    // ...
-    //
-      console.log('No existe usuario activo');
-    }
-  });
-}
-
-observador();
 
 
 /*
