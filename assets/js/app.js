@@ -8,7 +8,22 @@
     messagingSenderId: "343758776919"
   };
   firebase.initializeApp(config);
-  
+
+  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE) //  esto es para que se borre el usuario activo cada vez que inicio sesion
+  .then(function() {
+    // Existing and future Auth states are now persisted in the current
+    // session only. Closing the window would clear any existing state even
+    // if a user forgets to sign out.
+    // ...
+    // New sign-in will be persisted with session persistence.
+    return firebase.auth().GoogleAuthProvider();
+  })
+  .catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  });
+
   var provider = new firebase.auth.GoogleAuthProvider();
 
  function signIn(){
