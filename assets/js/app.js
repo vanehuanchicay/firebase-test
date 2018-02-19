@@ -19,7 +19,7 @@ var provider = new firebase.auth.GoogleAuthProvider();
   // The signed-in user info.
   var user = result.user;
   console.log(user.displayName);
-  $('.user_name').append('<h4> Hi ' + user.displayName + '!</h4>');
+  $('.user_name').append('<h3> Hi ' + user.displayName + '!</h3>');
   $('#multiple_option').removeClass('hidden');
   $('#google-sign').addClass('hidden');
   $('#other_option').removeClass('hidden');
