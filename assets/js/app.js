@@ -33,8 +33,6 @@ var provider = new firebase.auth.GoogleAuthProvider();
   var credential = error.credential;
   // ...
 });
-
-}
 function logOut(){
 firebase.auth().signOut().then(function() {
   // Sign-out successful.
@@ -43,6 +41,8 @@ firebase.auth().signOut().then(function() {
 });
 
 }
+}
+
 
 
 
