@@ -17,7 +17,7 @@
 	margin-top: 10%;
 	margin-bottom: 4%;
 }
-.multiple_option, .other_option{
+#multiple_option, #other_option{
 	background-color: #44d4ca;
 	color: white;
 	border-radius: 15px;
