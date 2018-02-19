@@ -7,48 +7,45 @@
     storageBucket: "trivia-8494a.appspot.com",
     messagingSenderId: "343758776919"
   };
-  // Iniciar con google.
-firebase.initializeApp(config);
 
-firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE) //  esto es para que se borre el usuario activo cada vez que inicio sesion
-  .then(function() {
-    // Existing and future Auth states are now persisted in the current
-    // session only. Closing the window would clear any existing state even
-    // if a user forgets to sign out.
-    // ...
-    // New sign-in will be persisted with session persistence.
-    return firebase.auth().GoogleAuthProvider();
-  })
-  .catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-  });
+firebase.initializeApp(config);
 
 var provider = new firebase.auth.GoogleAuthProvider();
 
-function signIn() {
-  firebase.auth().signInWithPopup(provider).then(function(result) {
+ function signIn(){
+ firebase.auth().signInWithPopup(provider).then(function(result) {
   // This gives you a Google Access Token. You can use it to access the Google API.
-    var token = result.credential.accessToken;
-    // The signed-in user info.
-    var user = result.user;
-    console.log(user.displayName);
-    $('.user_name').append('<h4>Welcome ' + user.displayName + '!</h4>');
- 
+  var token = result.credential.accessToken;
+  // The signed-in user info.
+  var user = result.user;
+  console.log(user.displayName);
+  $("p").text(user.displayName);
 
   // ...
-  }).catch(function(error) {
+}).catch(function(error) {
   // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // The email of the user's account used.
-    var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
   // ...
-  });
+});
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
