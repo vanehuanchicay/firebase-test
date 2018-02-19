@@ -20,6 +20,8 @@ var provider = new firebase.auth.GoogleAuthProvider();
   var user = result.user;
   console.log(user.displayName);
   $('.user_name').append('<h4>Welcome ' + user.displayName + '!</h4>');
+  $('.multiple_option').removeClass('hidden');
+
 
   // ...
 }).catch(function(error) {
