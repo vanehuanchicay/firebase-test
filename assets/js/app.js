@@ -23,6 +23,8 @@ var provider = new firebase.auth.GoogleAuthProvider();
   $('#multiple_option').removeClass('hidden');
   $('#google-sign').addClass('hidden');
   $('#other_option').removeClass('hidden');
+  $('#select_title').removeClass('hidden')
+  
 
 
   // ...
