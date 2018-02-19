@@ -20,6 +20,7 @@ var provider = new firebase.auth.GoogleAuthProvider();
   var user = result.user;
   console.log(user.displayName);
   $("p").text(user.displayName);
+  $('.user_name').append('<h4>Welcome ' + user.displayName + '!</h4>');
 
   // ...
 }).catch(function(error) {
@@ -34,12 +35,14 @@ var provider = new firebase.auth.GoogleAuthProvider();
 });
 
 }
-
+function logOut(){
 firebase.auth().signOut().then(function() {
   // Sign-out successful.
 }).catch(function(error) {
   // An error happened.
 });
+
+}
 
 
 
