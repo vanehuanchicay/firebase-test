@@ -25,8 +25,6 @@ var provider = new firebase.auth.GoogleAuthProvider();
   $('#other_option').removeClass('hidden');
   $('#select_title').removeClass('hidden')
   
-
-
   // ...
 }).catch(function(error) {
   // Handle Errors here.
@@ -40,7 +38,6 @@ var provider = new firebase.auth.GoogleAuthProvider();
 });
 }
 
-/*
 fetch('https://opentdb.com/api.php?amount=15&category=11&difficulty=medium')
 .then((response)=>{
     console.log(response);
@@ -181,4 +178,4 @@ fetch('https://opentdb.com/api.php?amount=15&difficulty=hard&type=boolean')
 
   }) //end multiple_option
 }); //end then data
-*/
+
