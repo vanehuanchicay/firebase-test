@@ -7,9 +7,10 @@
     storageBucket: "trivia-8494a.appspot.com",
     messagingSenderId: "343758776919"
   };
-  firebase.initializeApp(config);
+  // Iniciar con google.
+firebase.initializeApp(config);
 
-  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE) //  esto es para que se borre el usuario activo cada vez que inicio sesion
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE) //  esto es para que se borre el usuario activo cada vez que inicio sesion
   .then(function() {
     // Existing and future Auth states are now persisted in the current
     // session only. Closing the window would clear any existing state even
@@ -24,29 +25,56 @@
     var errorMessage = error.message;
   });
 
-  var provider = new firebase.auth.GoogleAuthProvider();
+var provider = new firebase.auth.GoogleAuthProvider();
 
- function signIn(){
-   firebase.auth().getRedirectResult().then(function(result) {
-  if (result.credential) {
-    // This gives you a Google Access Token. You can use it to access the Google API.
+function signIn() {
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+  // This gives you a Google Access Token. You can use it to access the Google API.
     var token = result.credential.accessToken;
-    // ...
-  }
-  // The signed-in user info.
-  var user = result.user;
-}).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // The email of the user's account used.
-  var email = error.email;
-  // The firebase.auth.AuthCredential type that was used.
-  var credential = error.credential;
+    // The signed-in user info.
+    var user = result.user;
+    console.log(user.displayName);
+    $('.image').append('<p class="nameUser">Welcome ' + user.displayName + '!<p>');
+ 
+
   // ...
-});
+  }).catch(function(error) {
+  // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+  // ...
+  });
 }
 
+function observador() {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log('existe usuario activo');
+      // User is signed in.
+      var displayName = user.displayName;
+      var email = user.email;
+      var emailVerified = user.emailVerified;
+      var photoURL = user.photoURL;
+      var isAnonymous = user.isAnonymous;
+      var uid = user.uid;
+      var providerData = user.providerData;
+      $('#google-sign').addClass('hidden');
+      $('#play').removeClass('hidden');
+      $('#play2').removeClass('hidden');
+    } else {
+    // User is signed out.
+    // ...
+    //
+      console.log('No existe usuario activo');
+    }
+  });
+}
+
+observador();
 
 
 /*
