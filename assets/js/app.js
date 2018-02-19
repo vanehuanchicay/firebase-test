@@ -19,7 +19,6 @@ var provider = new firebase.auth.GoogleAuthProvider();
   // The signed-in user info.
   var user = result.user;
   console.log(user.displayName);
-  $("p").text(user.displayName);
   $('.user_name').append('<h4>Welcome ' + user.displayName + '!</h4>');
 
   // ...
