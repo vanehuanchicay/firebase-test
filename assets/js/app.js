@@ -32,15 +32,15 @@ var provider = new firebase.auth.GoogleAuthProvider();
   var credential = error.credential;
   // ...
 });
+
+}
+
 firebase.auth().signOut().then(function() {
   // Sign-out successful.
 }).catch(function(error) {
   // An error happened.
 });
 
-
-
-}
 
 
 
